@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log Reading — Student Energy Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+  <span class="nav-brand">⚡ Student Energy Tracker</span>
+  <a href="dashboard.html" class="nav-link">Dashboard</a>
+  <a href="rooms.html" class="nav-link">Rooms</a>
+  <a href="input.html" class="nav-link">Log Reading</a>
+  <a href="tips.html" class="nav-link">Savings Tips</a>
+  <div class="nav-right">
+    <span id="nav-username"></span>
+    <button class="nav-logout" id="nav-logout">Sign out</button>
+  </div>
+</nav>
+<div class="page">
+  <h1>Log Energy Reading</h1>
+  <p class="subtitle">Enter a meter reading manually for any room.</p>
+  <div class="input-grid">
+    <div class="card">
+      <h2 style="font-size:15px;font-weight:600;margin-bottom:16px">New Reading</h2>
+      <form id="reading-form">
+        <div class="form-group">
+          <label for="room-select">Select Room</label>
+          <select id="room-select"></select>
+        </div>
+        <div class="form-group">
+          <label for="kwh-input">Energy Reading (kWh)</label>
+          <input type="number" id="kwh-input" step="0.01" min="0.01" placeholder="e.g. 2.45">
+        </div>
+        <div id="submit-msg" style="display:none"></div>
+        <button type="submit" id="submit-btn" class="btn btn-primary" style="width:100%">Log Reading</button>
+      </form>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:14px">
+        <h3 style="font-size:14px;font-weight:600;margin-bottom:10px" id="info-name">Room Info</h3>
+        <div class="info-grid">
+          <div class="info-item"><div class="info-item-label">Floor</div><div class="info-item-value" id="info-floor">—</div></div>
+          <div class="info-item"><div class="info-item-label">Occupants</div><div class="info-item-value" id="info-occ">—</div></div>
+          <div class="info-item"><div class="info-item-label">Latest Reading</div><div class="info-item-value" id="info-kwh">—</div></div>
+          <div class="info-item"><div class="info-item-label">7-Day Avg</div><div class="info-item-value" id="info-avg">—</div></div>
+        </div>
+      </div>
+      <div class="card" style="background:rgba(26,86,219,0.04);border-color:#d0dff0">
+        <div style="font-size:13px;font-weight:500;color:#1a56db;margin-bottom:6px">IoT Integration</div>
+        <p style="font-size:13px;color:#475569;margin-bottom:8px">For automatic collection POST to:</p>
+        <code style="font-size:12px;color:#0369a1">POST /api/energy/rooms/:id/readings</code>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/auth-guard.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/input.js"></script>
+</body>
+</html>

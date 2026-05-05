@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  server:
+    build: ./server
+    container_name: energy-tracker-api
+    ports:
+      - "5000:5000"
+    volumes:
+      - server-data:/app/data
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - JWT_SECRET=uni-energy-secret-change-in-production
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:5000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  client:
+    build: ./client
+    container_name: energy-tracker-ui
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    restart: unless-stopped
+volumes:
+  server-data:

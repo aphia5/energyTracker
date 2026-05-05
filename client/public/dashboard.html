@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Student Energy Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">⚡ Student Energy Tracker</span>
+  <a href="dashboard.html" class="nav-link">Dashboard</a>
+  <a href="rooms.html" class="nav-link">Rooms</a>
+  <a href="input.html" class="nav-link">Log Reading</a>
+  <a href="tips.html" class="nav-link">Savings Tips</a>
+  <div class="nav-right">
+    <span id="nav-username"></span>
+    <button class="nav-logout" id="nav-logout">Sign out</button>
+  </div>
+</nav>
+<div class="page">
+  <h1>Energy Dashboard</h1>
+  <p class="subtitle">Live energy usage across student accommodation</p>
+
+  <div class="stat-grid">
+    <div class="card">
+      <div class="stat-label">Today's Usage</div>
+      <div class="stat-value" id="today-kwh">—</div>
+      <div class="stat-sub" id="change-pct"></div>
+    </div>
+    <div class="card">
+      <div class="stat-label">7-Day Average</div>
+      <div class="stat-value" id="weekly-avg">—</div>
+      <div class="stat-sub">kWh/day</div>
+    </div>
+    <div class="card">
+      <div class="stat-label">Yesterday Total</div>
+      <div class="stat-value" id="yesterday-kwh">—</div>
+      <div class="stat-sub">kWh</div>
+    </div>
+    <div class="card">
+      <div class="stat-label">Top Consumer (7d)</div>
+      <div class="stat-value" style="font-size:16px" id="top-room">—</div>
+    </div>
+  </div>
+
+  <div class="chart-grid">
+    <div class="card">
+      <div class="chart-title">30-Day Consumption Trend</div>
+      <canvas id="trend-chart" height="120"></canvas>
+    </div>
+    <div class="card">
+      <div class="chart-title">Room Contributions (7 days)</div>
+      <canvas id="contrib-chart" height="120"></canvas>
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/auth-guard.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

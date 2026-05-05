@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Savings Tips — Student Energy Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav>
+  <span class="nav-brand">⚡ Student Energy Tracker</span>
+  <a href="dashboard.html" class="nav-link">Dashboard</a>
+  <a href="rooms.html" class="nav-link">Rooms</a>
+  <a href="input.html" class="nav-link">Log Reading</a>
+  <a href="tips.html" class="nav-link">Savings Tips</a>
+  <div class="nav-right">
+    <span id="nav-username"></span>
+    <button class="nav-logout" id="nav-logout">Sign out</button>
+  </div>
+</nav>
+<div class="page">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px">
+    <div>
+      <h1>Energy Saving Tips</h1>
+      <p class="subtitle">Practical ways to reduce energy use in student accommodation</p>
+    </div>
+    <button id="admin-add-btn" class="btn btn-primary" onclick="showAddForm()" style="display:none;margin-top:4px">+ Add Tip</button>
+  </div>
+
+  <!-- Admin form (hidden by default) -->
+  <div id="tip-form-section" style="display:none" class="card" style="margin-bottom:18px;border-color:#1a56db">
+    <h3 id="form-heading" style="font-size:15px;font-weight:600;margin-bottom:16px">Add New Tip</h3>
+    <form id="tip-form">
+      <input type="hidden" id="form-id">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" id="form-title" placeholder="e.g. Turn Off Lights When You Leave">
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="form-desc" rows="3" placeholder="Explain the tip in plain English for students..."></textarea>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label>Category</label>
+          <select id="form-category">
+            <option value="lighting">Lighting</option>
+            <option value="appliances">Appliances</option>
+            <option value="heating">Heating</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Saving (kWh/day)</label>
+          <input type="number" id="form-saving" step="0.1" min="0" placeholder="e.g. 0.5">
+        </div>
+      </div>
+      <div id="form-error" class="msg error" style="display:none"></div>
+      <div style="display:flex;gap:8px;margin-top:4px">
+        <button type="submit" class="btn btn-primary">Save Tip</button>
+        <button type="button" class="btn btn-secondary" onclick="cancelForm()">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <div id="admin-notice" class="admin-notice" style="display:none">
+    You are signed in as admin — you can add, edit and delete tips.
+  </div>
+
+  <div class="card tips-summary" style="margin-bottom:18px">
+    <div><div class="stat-label">Tips available</div><div class="stat-value" id="tip-count">—</div></div>
+    <div><div class="stat-label">Potential daily saving</div><div class="stat-value" id="total-saving">—</div><div class="stat-sub">kWh/day</div></div>
+    <div><div class="stat-label">Est. monthly CO₂ saving</div><div class="stat-value" id="co2-saving">—</div><div class="stat-sub">kg</div></div>
+  </div>
+
+  <div class="filter-row">
+    <button class="filter-btn active" id="filter-all"        onclick="setFilter('all')">All</button>
+    <button class="filter-btn"        id="filter-lighting"   onclick="setFilter('lighting')">Lighting</button>
+    <button class="filter-btn"        id="filter-appliances" onclick="setFilter('appliances')">Appliances</button>
+    <button class="filter-btn"        id="filter-heating"    onclick="setFilter('heating')">Heating</button>
+  </div>
+
+  <div class="tips-grid" id="tips-grid"></div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/auth-guard.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/tips.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rooms — Student Energy Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<nav>
+  <span class="nav-brand">⚡ Student Energy Tracker</span>
+  <a href="dashboard.html" class="nav-link">Dashboard</a>
+  <a href="rooms.html" class="nav-link">Rooms</a>
+  <a href="input.html" class="nav-link">Log Reading</a>
+  <a href="tips.html" class="nav-link">Savings Tips</a>
+  <div class="nav-right">
+    <span id="nav-username"></span>
+    <button class="nav-logout" id="nav-logout">Sign out</button>
+  </div>
+</nav>
+<div class="page">
+  <h1>Room Monitor</h1>
+  <p class="subtitle">Select a room to view its 14-day usage history</p>
+  <div class="rooms-grid">
+    <div class="room-list" id="room-list"></div>
+    <div class="card">
+      <h2 id="detail-name" style="font-size:17px;font-weight:600;margin-bottom:14px">Select a room</h2>
+      <div class="detail-stats">
+        <div><div class="detail-stat-label">Floor</div><div class="detail-stat-value" id="detail-floor">—</div></div>
+        <div><div class="detail-stat-label">Occupants</div><div class="detail-stat-value" id="detail-occ">—</div></div>
+        <div><div class="detail-stat-label">Latest</div><div class="detail-stat-value" id="detail-kwh">—</div></div>
+        <div><div class="detail-stat-label">7-Day Avg</div><div class="detail-stat-value" id="detail-avg">—</div></div>
+      </div>
+      <div class="chart-title">14-Day Reading History</div>
+      <canvas id="room-chart" height="130"></canvas>
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/auth-guard.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/rooms.js"></script>
+</body>
+</html>

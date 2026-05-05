@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Student Energy Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="login-wrap">
+  <div class="login-box">
+    <div class="login-header">
+      <div class="login-icon">⚡</div>
+      <div class="login-title">Student Energy Tracker</div>
+      <div style="font-size:13px;color:#475569">Sign in to your account</div>
+    </div>
+    <form id="login-form">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" placeholder="Enter your username" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+      </div>
+      <div id="error-msg" class="msg error" style="display:none"></div>
+      <button type="submit" id="login-btn" class="btn btn-primary" style="width:100%;margin-top:4px">Sign In</button>
+    </form>
+    <div class="login-hint">
+      <div style="font-weight:500;margin-bottom:4px">Demo accounts</div>
+      <div>Student: <strong>student</strong> / <strong>student123</strong></div>
+      <div>Admin: <strong>admin</strong> / <strong>admin123</strong></div>
+    </div>
+  </div>
+</div>
+<script src="js/api.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>
